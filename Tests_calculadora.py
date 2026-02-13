@@ -13,4 +13,5 @@ class TestCalculadoraImpuestos(unittest.TestCase):
         #Proceso
         impuesto_calculado = logica_calculadora_impuestos.calcular_impuestos(ingresos_anuales, deducciones, pension, salud, dependientes, vivienda_propia)
         #Salida 
+        self.assertAlmostEqual(impuesto_calculado,20853633.5, 2)
         
