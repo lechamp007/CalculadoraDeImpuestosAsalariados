@@ -38,7 +38,7 @@ class ValidarVariables:
     def validar_parametros_entrada(variables_impuestos) -> None:
         #Valida los parámetros de entrada para el cálculo de impuestos.
         if variables_impuestos.ingresos_anuales < 0:
-            raise ErrorIngresos(f"ERROR: Los ingresos anuales no pueden ser negativos: {variables_impuestos.ingresos_anuales}$")
+            raise ErrorIngresos(variables_impuestos.ingresos_anuales)
         if variables_impuestos.deducciones > variables_impuestos.ingresos_anuales:
             raise ErrorTopesDeducciones(variables_impuestos.deducciones, variables_impuestos.ingresos_anuales)
         if variables_impuestos.dependientes < 0:
