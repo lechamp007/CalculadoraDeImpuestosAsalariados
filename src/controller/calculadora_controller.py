@@ -55,7 +55,7 @@ class CalculadoraController:
             calculadora.tiene_vivienda_propia,
             calculadora.intereses_credito_vivienda
         )
-        cursor.execute(consulta, valores)   # ⚠️ Faltaban los valores
+        cursor.execute(consulta, valores)
         cursor.connection.commit()
         cursor.connection.close()
 
