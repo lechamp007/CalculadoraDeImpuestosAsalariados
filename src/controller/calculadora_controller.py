@@ -1,3 +1,6 @@
+import sys
+sys.path.append( "." )
+sys.path.append( "src" )
 import psycopg2
 import secret_config
 from model.calculadora import Calculadora

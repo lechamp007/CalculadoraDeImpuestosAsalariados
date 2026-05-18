@@ -17,7 +17,7 @@ class Calculadora:
         assert( float(self.aporte_salud) == float(otro.aporte_salud ) )
         assert( int(self.numero_dependientes) == int(otro.numero_dependientes))
         assert( bool(self.tiene_vivienda_propia) == bool(otro.tiene_vivienda_propia)  )
-        assert( float(self.intereses_credito_vivienda) == bool(otro.intereses_credito_vivienda) )
+        assert( float(self.intereses_credito_vivienda) == float(otro.intereses_credito_vivienda) )
         return True 
         
 
