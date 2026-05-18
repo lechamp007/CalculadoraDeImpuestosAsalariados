@@ -41,7 +41,6 @@ class TestCalculadoraImpuestos( unittest.TestCase ):
                             numero_dependientes= 0,
                             tiene_vivienda_propia= False,
                             intereses_credito_vivienda= 0)
-        
  
         CalculadoraController.insertar( impuesto )
         
