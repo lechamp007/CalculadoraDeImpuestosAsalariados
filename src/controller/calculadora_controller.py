@@ -1,6 +1,6 @@
 import psycopg2
 import secret_config
-from modelo.calculadora import Calculadora
+from model.calculadora import Calculadora
 
 class CalculadoraController:
 
