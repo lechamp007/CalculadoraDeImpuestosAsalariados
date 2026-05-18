@@ -255,6 +255,8 @@ Los casos de prueba están documentados en el archivo casos_prueba.xlsx e incluy
 ## Patron MVC con PostgresSQL. 
 Instale el paquete psycopg2 con:
     pip install psycopg2
+
+    
 Asegúrese de tener una base de datos PostgreSQL y sus respectivos datos de acceso.
 Copie el archivo secret_config_sample.py como secret_config.py y establezca en este archivo los datos de conexión a su base de datos:
 PGHOST     = 'su-host.oregon-postgres.render.com'
@@ -262,8 +264,11 @@ PGDATABASE = 'nombre_de_su_bd'
 PGUSER     = 'su_usuario'
 PGPASSWORD = 'su_contraseña'
 PGPORT     = 5432
+
 Esta aplicación requiere que esté creada una tabla llamada calculadora.
 Utilice el script en sql/crear-calculadora.sql para crearla antes de ejecutar la aplicación:
+
+
 create table calculadora (
     id SERIAL PRIMARY KEY,
     ingresos_anuales FLOAT NOT NULL,
