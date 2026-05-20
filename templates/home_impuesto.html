@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Formulario</title>
+</head>
+
+<body>
+
+    <form action="/calcular_impuesto">
+
+        <div>
+            Ingresos anuales:
+            <input type="number" name="ingresos_anuales">
+        </div>
+
+        <div>
+            Deducciones generales:
+            <input type="number" name="deducciones">
+        </div>
+
+        <div>
+            Aporte pensión:
+            <input type="number" name="pension">
+        </div>
+
+        <div>
+            Aporte salud:
+            <input type="number" name="salud">
+        </div>
+
+        <div>
+            Número dependientes:
+            <input type="number" name="dependientes">
+        </div>
+
+        <div>
+            ¿Tiene vivienda propia?
+
+            <input type="radio" name="vivienda_propia" value="True"> Sí
+
+            <input type="radio" name="vivienda_propia" value="False"> No
+        </div>
+
+        <div>
+            Intereses crédito vivienda:
+            <input type="number" name="interes_credito">
+        </div>
+
+        <br>
+
+        <button type="submit">
+            Enviar
+        </button>
+
+    </form>
+
+</body>
+
+</html>
