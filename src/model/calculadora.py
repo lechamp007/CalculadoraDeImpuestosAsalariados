@@ -1,6 +1,7 @@
+import uuid
 class Calculadora: 
-    def __init__(self,id,ingresos_anuales,deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda ):
-        self.id = id
+    def __init__(self,ingresos_anuales,deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda, id= None):
+        self.id = id if id is not None else str(uuid.uuid4())
         self.ingresos_anuales =ingresos_anuales
         self.deducciones_generales= deducciones_generales   
         self.aporte_pension= aporte_pension   
@@ -10,7 +11,7 @@ class Calculadora:
         self.intereses_credito_vivienda=intereses_credito_vivienda
 
     def is_equal(self,otro) -> bool:
-        assert( int(self.id) == int(otro.id) )
+        assert( str(self.id) == str(otro.id) )
         assert( float(self.ingresos_anuales) == float(otro.ingresos_anuales) )
         assert( float(self.deducciones_generales) == float(otro.deducciones_generales))
         assert( float(self.aporte_pension) == float(otro.aporte_pension) )

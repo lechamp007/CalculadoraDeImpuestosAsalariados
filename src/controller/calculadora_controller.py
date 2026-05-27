@@ -61,7 +61,7 @@ class CalculadoraController:
         cursor.execute(consulta, valores)
         cursor.connection.commit()
         cursor.connection.close()
-
+        return calculador.id
     def buscar_impuesto(id):
         cursor = CalculadoraController.obtener_cursor()
         consulta = """
@@ -85,7 +85,7 @@ class CalculadoraController:
             raise ValueError(f"No existe un registro con id={id}")
 
         calculadora = Calculadora(
-            id                         = resultado[0],
+            id                         = str(resultado[0]),
             ingresos_anuales           = resultado[1],
             deducciones_generales      = resultado[2],
             aporte_pension             = resultado[3],
