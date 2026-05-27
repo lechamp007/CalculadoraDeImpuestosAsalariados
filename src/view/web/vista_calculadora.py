@@ -14,7 +14,7 @@ def home_impuesto():
 @blueprint.route('/crear_tabla')
 def crear_tabla():
     CalculadoraController.crear_tabla()
-    return "Tabla  calculadora creada con exito"
+    return render_template("tabla_creada.html")
 @blueprint.route('/calcular_impuesto')
 def calcular_impuesto():
     impuesto= VariablesImpuestos(ingresos_anuales= float(request.args["ingresos_anuales"]), deducciones= float(request.args["deducciones"]),
@@ -24,5 +24,7 @@ def calcular_impuesto():
     resultado_impuesto= CalcularImpuesto.calcular_impuesto_renta(impuesto)
     CalculadoraController.insertar( impuesto )
     return render_template("impuesto_resultado.html", resultado_impuesto= resultado_impuesto)
+
+
 if __name__=='__main__':
     blueprint.run(debug=True)
