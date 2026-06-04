@@ -6,7 +6,7 @@ from model import logica_calculadora_impuestos
 
 
 def solicitar_datos_usuario():
-    #Solicita y retorna los datos necesarios para el cálculo de impuestos.
+    
     print("Bienvenido al programa que le ayuda a calcular la cantidad de impuestos a pagar")
     ingresos_anuales = float(input("Ingresos anuales: "))
     deducciones_generales = float(input("Deducciones generales: "))

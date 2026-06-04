@@ -13,6 +13,7 @@ def home_impuesto():
     return render_template("home_impuesto.html")
 @blueprint.route('/crear_tabla')
 def crear_tabla():
+    CalculadoraController.borrar_tabla()
     CalculadoraController.crear_tabla()
     return render_template("tabla_creada.html")
 @blueprint.route('/calcular_impuesto')
