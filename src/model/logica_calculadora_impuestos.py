@@ -1,4 +1,4 @@
-
+from typing import Any
 class ErrorIngresos(Exception):
     """Los ingresos anuales deben ser mayores o iguales a cero."""
     def __init__(self, ingresos): 
@@ -24,7 +24,7 @@ class ErrorSalud(Exception):
     def __init__(self, salud):
         super().__init__(f"ERROR: Aportes a salud: {salud}$ no pueden ser negativos") 
 class VariablesImpuestos:
-    def __init__(self,id: int, ingresos_anuales: float, deducciones_generales: float, aporte_pension: float, aporte_salud: float, numero_dependientes: int, tiene_vivienda_propia: bool, intereses_credito_vivienda: float):
+    def __init__(self, id:int, ingresos_anuales: float, deducciones_generales: float, aporte_pension: float, aporte_salud: float, numero_dependientes: int, tiene_vivienda_propia: bool, intereses_credito_vivienda: float):
         self.id = id
         self.ingresos_anuales = ingresos_anuales
         self.deducciones_generales = deducciones_generales
