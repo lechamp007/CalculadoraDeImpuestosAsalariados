@@ -26,6 +26,12 @@ def calcular_impuesto():
     CalculadoraController.insertar( impuesto )
     return render_template("impuesto_resultado.html", resultado_impuesto= resultado_impuesto)
 
+@blueprint.route("/buscar_impuesto")
+def buscar_usuario():
+   id = request.args["id"]
+   impuesto = CalculadoraController.buscar_impuesto(id)
+   return render_template("buscar_impuesto.html", impuesto_buscado = impuesto )
+
 
 if __name__=='__main__':
     blueprint.run(debug=True)

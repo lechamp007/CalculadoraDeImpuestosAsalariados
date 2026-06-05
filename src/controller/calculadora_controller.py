@@ -61,7 +61,7 @@ class CalculadoraController:
         cursor.execute(consulta, valores)
         cursor.connection.commit()
         cursor.connection.close()
-        return calculador.id
+        return calculadora.id
     def buscar_impuesto(id):
         cursor = CalculadoraController.obtener_cursor()
         consulta = """
