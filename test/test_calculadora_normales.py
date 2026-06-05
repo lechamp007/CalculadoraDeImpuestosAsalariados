@@ -15,7 +15,7 @@ class TestCalculoImpuestosNormales(unittest.TestCase):
         tiene_vivienda_propia = True
         intereses_credito_vivienda = 5_000_000
         impuesto_esperado = 0
-        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
+        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(1,ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
         impuesto_calculado=logica_calculadora_impuestos.CalcularImpuesto.calcular_impuesto_renta(variables_impuestos)
         self.assertAlmostEqual(impuesto_calculado, impuesto_esperado)
 
@@ -28,7 +28,7 @@ class TestCalculoImpuestosNormales(unittest.TestCase):
         tiene_vivienda_propia = False
         intereses_credito_vivienda = 0
         impuesto_esperado = 0
-        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
+        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(2,ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
         impuesto_calculado=logica_calculadora_impuestos.CalcularImpuesto.calcular_impuesto_renta(variables_impuestos)
         self.assertAlmostEqual(impuesto_calculado, impuesto_esperado)
 
@@ -41,7 +41,7 @@ class TestCalculoImpuestosNormales(unittest.TestCase):
         tiene_vivienda_propia = True
         intereses_credito_vivienda = 2_000_000
         impuesto_esperado = 11_000_237
-        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
+        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(3,ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
         impuesto_calculado=logica_calculadora_impuestos.CalcularImpuesto.calcular_impuesto_renta(variables_impuestos)
         self.assertAlmostEqual(impuesto_calculado, impuesto_esperado)
 

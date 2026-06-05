@@ -16,7 +16,7 @@ class TestErroresCalculoImpuestos(unittest.TestCase):
         numero_dependientes = 1
         tiene_vivienda_propia = True
         intereses_credito_vivienda = 3_000_000
-        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
+        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(1,ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
         with self.assertRaises(logica_calculadora_impuestos.ErrorIngresos):
             logica_calculadora_impuestos.CalcularImpuesto.calcular_impuesto_renta(variables_impuestos)
 
@@ -28,7 +28,7 @@ class TestErroresCalculoImpuestos(unittest.TestCase):
         numero_dependientes = 1
         tiene_vivienda_propia = False
         intereses_credito_vivienda = 0
-        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
+        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(2, ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
         with self.assertRaises(logica_calculadora_impuestos.ErrorTopesDeducciones):
             logica_calculadora_impuestos.CalcularImpuesto.calcular_impuesto_renta(variables_impuestos)
 
@@ -40,7 +40,7 @@ class TestErroresCalculoImpuestos(unittest.TestCase):
         numero_dependientes = -2
         tiene_vivienda_propia = True
         intereses_credito_vivienda = 5_000_000
-        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
+        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(3,ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
         with self.assertRaises(logica_calculadora_impuestos.ErrorDependientes):
             logica_calculadora_impuestos.CalcularImpuesto.calcular_impuesto_renta(variables_impuestos)
 
@@ -52,7 +52,7 @@ class TestErroresCalculoImpuestos(unittest.TestCase):
         numero_dependientes = 2
         tiene_vivienda_propia = True
         intereses_credito_vivienda = 6_000_000
-        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
+        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(4,ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
         with self.assertRaises(logica_calculadora_impuestos.ErrorPension):
             logica_calculadora_impuestos.CalcularImpuesto.calcular_impuesto_renta(variables_impuestos)
 
@@ -64,7 +64,7 @@ class TestErroresCalculoImpuestos(unittest.TestCase):
         numero_dependientes = 1
         tiene_vivienda_propia = True
         intereses_credito_vivienda = -3_000_000
-        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
+        variables_impuestos= logica_calculadora_impuestos.VariablesImpuestos(5,ingresos_anuales, deducciones_generales,aporte_pension,aporte_salud,numero_dependientes,tiene_vivienda_propia,intereses_credito_vivienda )
         with self.assertRaises(logica_calculadora_impuestos.ErrorInteresVivienda):
             logica_calculadora_impuestos.CalcularImpuesto.calcular_impuesto_renta(variables_impuestos)
 
