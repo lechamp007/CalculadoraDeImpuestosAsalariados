@@ -18,7 +18,7 @@ def crear_tabla():
     return render_template("tabla_creada.html")
 @blueprint.route('/calcular_impuesto')
 def calcular_impuesto():
-    impuesto= VariablesImpuestos(ingresos_anuales= float(request.args["ingresos_anuales"]), deducciones= float(request.args["deducciones"]),
+    impuesto= VariablesImpuestos(id=int(request.args["cedula"]),ingresos_anuales= float(request.args["ingresos_anuales"]), deducciones= float(request.args["deducciones"]),
                                  pension=float(request.args["pension"]), salud=float(request.args["salud"]),
                                  dependientes=int(request.args["dependientes"]), tiene_vivienda_propia=bool(request.args["vivienda_propia"]),
                                  intereses_vivienda=float(request.args["interes_credito"]))

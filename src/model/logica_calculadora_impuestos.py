@@ -24,7 +24,8 @@ class ErrorSalud(Exception):
     def __init__(self, salud):
         super().__init__(f"ERROR: Aportes a salud: {salud}$ no pueden ser negativos") 
 class VariablesImpuestos:
-    def __init__(self,ingresos_anuales: float, deducciones: float, pension: float, salud: float, dependientes: int, tiene_vivienda_propia: int,intereses_vivienda: float):
+    def __init__(self,id: int, ingresos_anuales: float, deducciones: float, pension: float, salud: float, dependientes: int, tiene_vivienda_propia: int,intereses_vivienda: float):
+        self.id= id
         self.ingresos_anuales = ingresos_anuales
         self.deducciones = deducciones
         self.pension = pension

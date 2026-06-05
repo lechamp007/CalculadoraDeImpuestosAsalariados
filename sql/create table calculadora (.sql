@@ -1,4 +1,3 @@
--- Crea la tabla de calculadora que aloja los impuestos
 create table calculadora (
     id INTEGER PRIMARY KEY,
     ingresos_anuales FLOAT NOT NULL,

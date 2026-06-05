@@ -10,30 +10,48 @@
 
     <table>
         <tr>
-            <td>Numero de Tarjeta</td>
+            <td>Id de impuesto</td>
             <td>
-{{ tarjeta.numero_tarjeta }}
+{{ impuesto_buscado.id}}
             </td>
         </tr>
         <tr>
-            <td>Cédula</td>
+            <td>Ingresos anuales</td>
             <td>
-{{tarjeta.cedula}}
+{{impuesto_buscado.ingresos_anuales}}
             </td>
         </tr>
         <tr>
-            <td>Franquicia</td>
+            <td>deducciones generales</td>
             <td>
-{{tarjeta.franquicia}}
+{{impuesto_buscado.deducciones_generales}}
             </td>
         </tr>
         <tr>
-            <td>Fecha de Vencimiento</td>
+            <td>Aporte de pensión</td>
             <td>
-{{tarjeta.fecha_vencimiento}}
+{{impuesto_buscado.aporte_pension}}
+            </td>
+        </tr>
+        <tr>
+            <td>Aporte salud</td>
+            <td>
+{{impuesto_buscado.aporte_salud}}
+            </td>
+        </tr>
+        <tr>
+            <td>numero dependientes</td>
+            <td>
+{{impuesto_buscado.numero_dependientes}}
+            </td>
+        </tr>
+        <tr>
+            <td>Intereses de vivienda</td>
+            <td>
+{{impuesto_buscado.intereses_credito_vivienda}}
+            </td>
+        </tr>
 
-            </td>
-        </tr>
     </table>
 
 </body>
