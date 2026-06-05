@@ -279,3 +279,88 @@ create table calculadora (
     tiene_vivienda_propia BOOLEAN NOT NULL,
     intereses_credito_vivienda FLOAT NOT NULL
 );
+
+## Ejecutar la aplicación localmente (con base de datos en blanco)
+
+Link de la pagina web: https://calculadoradeimpuestosasalariados-1.onrender.com/
+
+Sigue estos pasos para levantar la aplicación localmente y crear una base de datos PostgreSQL vacía.
+
+1) Requisitos
+
+- Python 3.8+ instalado
+- `pip` disponible
+- PostgreSQL local o Docker (opción recomendada para no instalar PostgreSQL en el equipo)
+
+2) Instalar dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+3) Opciones para crear una base de datos en blanco
+
+- Opción A — Usar Docker (rápido y aislado):
+
+```bash
+# Ejecuta un contenedor Postgres local expuesto en el puerto 5432
+docker run --name calculadora-postgres \
+  -e POSTGRES_USER=usuario \
+  -e POSTGRES_PASSWORD=contrasena \
+  -e POSTGRES_DB=calculadora_db \
+  -p 5432:5432 -d postgres:15
+```
+
+- Opción B — Usar una instalación local de PostgreSQL:
+
+Usa `psql` o PgAdmin para crear una base de datos y un usuario. Ejemplo con `psql`:
+
+```sql
+CREATE DATABASE calculadora_db;
+CREATE USER usuario WITH ENCRYPTED PASSWORD 'contrasena';
+GRANT ALL PRIVILEGES ON DATABASE calculadora_db TO usuario;
+```
+
+4) Configurar conexión
+
+- Copia `secret_config_sample.py` a `secret_config.py` y actualiza los valores:
+
+```py
+PGHOST = 'localhost'
+PGDATABASE = 'calculadora_db'
+PGUSER = 'usuario'
+PGPASSWORD = 'contrasena'
+PGPORT = 5432
+```
+
+5) Crear la tabla `calculadora` (vacía)
+
+Ejecuta el script SQL que ya se incluye en el repositorio:
+
+```bash
+# Usando psql local (ajusta host/usuario/db según tu configuración)
+psql -h localhost -U usuario -d calculadora_db -f sql/crear-calculadora.sql
+
+# O desde Docker (si usaste la opción Docker anterior):
+docker exec -i calculadora-postgres psql -U usuario -d calculadora_db < sql/crear-calculadora.sql
+```
+
+Alternativamente la aplicación incluye una ruta que crea la tabla si no existe: abre `http://127.0.0.1:5000/crear_tabla` después de levantar la app.
+
+6) Ejecutar la aplicación
+
+```bash
+python app.py
+# Luego abre en el navegador: http://127.0.0.1:5000/
+```
+
+7) Verificar
+
+- La página principal `home_impuesto` debe cargarse. Usa el formulario para insertar datos y prueba la búsqueda por ID.
+- Si prefieres ejecutar pruebas que crean y validan la tabla automáticamente, ejecuta:
+
+```bash
+python -m unittest discover -s test -v
+```
+
+Si necesitas que cree un script adicional o un comando `Makefile`/`powershell` para automatizar estos pasos, dime y lo agrego.
