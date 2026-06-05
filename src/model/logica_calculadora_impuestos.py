@@ -24,15 +24,15 @@ class ErrorSalud(Exception):
     def __init__(self, salud):
         super().__init__(f"ERROR: Aportes a salud: {salud}$ no pueden ser negativos") 
 class VariablesImpuestos:
-    def __init__(self,id: int, ingresos_anuales: float, deducciones: float, pension: float, salud: float, dependientes: int, tiene_vivienda_propia: int,intereses_vivienda: float):
-        self.id= id
+    def __init__(self,id: int, ingresos_anuales: float, deducciones_generales: float, aporte_pension: float, aporte_salud: float, numero_dependientes: int, tiene_vivienda_propia: bool, intereses_credito_vivienda: float):
+        self.id = id
         self.ingresos_anuales = ingresos_anuales
-        self.deducciones = deducciones
-        self.pension = pension
-        self.salud = salud
-        self.dependientes = dependientes
+        self.deducciones_generales = deducciones_generales
+        self.aporte_pension = aporte_pension
+        self.aporte_salud = aporte_salud
+        self.numero_dependientes = numero_dependientes
         self.tiene_vivienda_propia = tiene_vivienda_propia
-        self.intereses_vivienda = intereses_vivienda
+        self.intereses_credito_vivienda = intereses_credito_vivienda
 
 class ValidarVariables:
 
@@ -40,16 +40,16 @@ class ValidarVariables:
         #Valida los parámetros de entrada para el cálculo de impuestos.
         if variables_impuestos.ingresos_anuales < 0:
             raise ErrorIngresos(variables_impuestos.ingresos_anuales)
-        if variables_impuestos.deducciones > variables_impuestos.ingresos_anuales:
-            raise ErrorTopesDeducciones(variables_impuestos.deducciones, variables_impuestos.ingresos_anuales)
-        if variables_impuestos.dependientes < 0:
-            raise ErrorDependientes(variables_impuestos.dependientes)
-        if variables_impuestos.pension < 0:
-            raise ErrorPension(variables_impuestos.pension)
-        if variables_impuestos.intereses_vivienda < 0:
-            raise ErrorInteresVivienda(variables_impuestos.intereses_vivienda)
-        if variables_impuestos.salud < 0:
-            raise ErrorSalud(variables_impuestos.salud)
+        if variables_impuestos.deducciones_generales > variables_impuestos.ingresos_anuales:
+            raise ErrorTopesDeducciones(variables_impuestos.deducciones_generales, variables_impuestos.ingresos_anuales)
+        if variables_impuestos.numero_dependientes < 0:
+            raise ErrorDependientes(variables_impuestos.numero_dependientes)
+        if variables_impuestos.aporte_pension < 0:
+            raise ErrorPension(variables_impuestos.aporte_pension)
+        if variables_impuestos.intereses_credito_vivienda < 0:
+            raise ErrorInteresVivienda(variables_impuestos.intereses_credito_vivienda)
+        if variables_impuestos.aporte_salud < 0:
+            raise ErrorSalud(variables_impuestos.aporte_salud)
 
 class CalcularImpuesto:
 
@@ -89,13 +89,13 @@ def calcular_base_gravable_pesos(variables_impuestos: VariablesImpuestos) -> flo
 
     # Deducciones especiales con límite: 40% ingresos o 1,340 UVT (lo menor)
     deduccion_10_por_ciento = min(variables_impuestos.ingresos_anuales * 0.1, 384 * unidad_uvt)
-    deduccion_por_dependientes = 72 * unidad_uvt * min(variables_impuestos.dependientes, 4)
-    deduccion_por_vivienda = min(variables_impuestos.intereses_vivienda, 1200 * unidad_uvt) if variables_impuestos.tiene_vivienda_propia else 0
-    total_deducciones_especiales = variables_impuestos.deducciones + deduccion_10_por_ciento + deduccion_por_dependientes + deduccion_por_vivienda
+    deduccion_por_dependientes = 72 * unidad_uvt * min(variables_impuestos.numero_dependientes, 4)
+    deduccion_por_vivienda = min(variables_impuestos.intereses_credito_vivienda, 1200 * unidad_uvt) if variables_impuestos.tiene_vivienda_propia else 0
+    total_deducciones_especiales = variables_impuestos.deducciones_generales + deduccion_10_por_ciento + deduccion_por_dependientes + deduccion_por_vivienda
     limite_deducciones_especiales = min(variables_impuestos.ingresos_anuales * 0.4, 1340 * unidad_uvt)
     total_deducciones_especiales = min(total_deducciones_especiales, limite_deducciones_especiales)
 
-    return max(0, variables_impuestos.ingresos_anuales - renta_exenta - (variables_impuestos.pension + variables_impuestos.salud) - total_deducciones_especiales)
+    return max(0, variables_impuestos.ingresos_anuales - renta_exenta - (variables_impuestos.aporte_pension + variables_impuestos.aporte_salud) - total_deducciones_especiales)
 
 
 

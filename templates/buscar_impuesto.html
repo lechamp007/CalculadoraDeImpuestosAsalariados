@@ -7,53 +7,40 @@
 </head>
 
 <body>
-
+    {% if impuesto_buscado %}
     <table>
         <tr>
             <td>Id de impuesto</td>
-            <td>
-{{ impuesto_buscado.id}}
-            </td>
+            <td>{{ impuesto_buscado.id }}</td>
         </tr>
         <tr>
             <td>Ingresos anuales</td>
-            <td>
-{{impuesto_buscado.ingresos_anuales}}
-            </td>
+            <td>{{ impuesto_buscado.ingresos_anuales }}</td>
         </tr>
         <tr>
-            <td>deducciones generales</td>
-            <td>
-{{impuesto_buscado.deducciones_generales}}
-            </td>
+            <td>Deducciones generales</td>
+            <td>{{ impuesto_buscado.deducciones_generales }}</td>
         </tr>
         <tr>
             <td>Aporte de pensión</td>
-            <td>
-{{impuesto_buscado.aporte_pension}}
-            </td>
+            <td>{{ impuesto_buscado.aporte_pension }}</td>
         </tr>
         <tr>
             <td>Aporte salud</td>
-            <td>
-{{impuesto_buscado.aporte_salud}}
-            </td>
+            <td>{{ impuesto_buscado.aporte_salud }}</td>
         </tr>
         <tr>
-            <td>numero dependientes</td>
-            <td>
-{{impuesto_buscado.numero_dependientes}}
-            </td>
+            <td>Número dependientes</td>
+            <td>{{ impuesto_buscado.numero_dependientes }}</td>
         </tr>
         <tr>
             <td>Intereses de vivienda</td>
-            <td>
-{{impuesto_buscado.intereses_credito_vivienda}}
-            </td>
+            <td>{{ impuesto_buscado.intereses_credito_vivienda }}</td>
         </tr>
-
     </table>
-
+    {% else %}
+    <p>No se encontró ningún impuesto. Verifica el ID y vuelve a intentarlo.</p>
+    {% endif %}
 </body>
 
 </html>
